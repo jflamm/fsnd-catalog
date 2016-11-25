@@ -1,0 +1,16 @@
+
+.navbar {
+    background-color: #091b43;
+}
+.menu-item {
+	background: #F0F0F0;
+	padding: 20px;
+	margin: 20px;
+	margin-left: -20px;
+}
+.padding-top {
+	padding-top: 50px;
+}
+.padding-bottom {
+	padding-bottom: 10px;
+}
