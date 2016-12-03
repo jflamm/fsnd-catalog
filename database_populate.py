@@ -3,7 +3,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Category, Base, CategoryItem
+from database_setup import Category, Base, CategoryItem, User
 
 engine = create_engine('postgresql:///catalog')
 # Bind the engine to the metadata of the Base class so that the
@@ -21,6 +21,9 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+user1 = User(name="Not a real user", email="fake_email@nonexistent.com")
+session.add(user1)
+session.commit()
 
 #Prepolulate categories
 category1 = Category(name = "Soccer")
@@ -29,10 +32,7 @@ session.add(category1)
 session.commit()
 
 categoryItem1 = CategoryItem(title = "Shinguards",
-                             description = "Shin guards are as much a part of the player's uniform as cleats or a jersey.\
-                               A required piece of equipment, it can be hard to decide which shinguard is right for you.\
-                               For example, a midfielder may not require the same type of guard as a forward.\
-                               A youth player will not wear the same type guard as an older player.".rstrip('\n'),
+                             description = "Shin guards are as much a part of the player's uniform as cleats or a jersey. A required piece of equipment, it can be hard to decide which shinguard is right for you. For example, a midfielder may not require the same type of guard as a forward. A youth player will not wear the same type guard as an older player.".rstrip('\n'),
                              category = category1)
 
 session.add(categoryItem1)
@@ -60,18 +60,14 @@ session.add(category5)
 session.commit()
 
 categoryItem1 = CategoryItem(title = "Snowboard",
-                             description = """Best for any terrain and conditions.  All-mountain snowboards perform anywhere
-                              on a mountain - groomed runs, backcountry, even park and pipe.  They may be directional
-                              (meaning downhill only) or twin-tip (for ride switching, meaning either direction).
-                              Most boarders ride all-mountain boards.""",
+                             description = """Best for any terrain and conditions.  All-mountain snowboards perform anywhere on a mountain - groomed runs, backcountry, even park and pipe.  They may be directional (meaning downhill only) or twin-tip (for ride switching, meaning either direction). Most boarders ride all-mountain boards.""",
                              category = category5)
 
 session.add(categoryItem1)
 session.commit()
 
 categoryItem2 = CategoryItem(title = "Goggles",
-                             description = """forms of protective eyewear that usually enclose or protect the area surrounding
-                              the eye in order to prevent particulates, water or chemicals from striking the eyes.""",
+                             description = """forms of protective eyewear that usually enclose or protect the area surrounding the eye in order to prevent particulates, water or chemicals from striking the eyes.""",
                              category = category5)
 
 session.add(categoryItem2)

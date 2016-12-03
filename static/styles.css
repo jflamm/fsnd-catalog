@@ -1,12 +1,14 @@
-
 .navbar {
     background-color: #091b43;
 }
-.menu-item {
-	background: #F0F0F0;
-	padding: 20px;
-	margin: 20px;
-	margin-left: -20px;
+#signInButton {
+    margin-top: 11px;
+}
+.category-item {
+    font-size: large;
+}
+.form-group * {
+	margin-bottom: 15px;
 }
 .padding-top {
 	padding-top: 50px;

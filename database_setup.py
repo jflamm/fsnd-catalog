@@ -10,6 +10,7 @@ class Category(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
+    items = relationship("CategoryItem", back_populates="category")
 
     @property
     def serialize(self):
@@ -17,6 +18,7 @@ class Category(Base):
        return {
            'name' : self.name,
            'id' : self.id,
+           'items': [i.serialize() for i in self.items]
        }
 
 class User(Base):
@@ -24,12 +26,15 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
+    email = Column(String(80), nullable=False)
+
 
     @property
     def serialize(self):
        """Return object data in easily serializeable format"""
        return {
            'name' : self.name,
+           'email': self.email,
            'id' : self.id,
        }
 
@@ -39,10 +44,10 @@ class CategoryItem(Base):
     title = Column(String(80), nullable = False)
     description = Column(String(500), nullable = False)
     id = Column(Integer, primary_key = True)
-    category_id = Column(Integer,ForeignKey('categories.id'))
-    category = relationship(Category)
-    user_id = Column(Integer,ForeignKey('users.id'))
-    user = relationship(User)
+    category_id = Column(Integer, ForeignKey('categories.id'))
+    category = relationship("Category", back_populates="items")
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship("User")
 
 
     @property

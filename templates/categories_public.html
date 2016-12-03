@@ -20,10 +20,10 @@
 </div>
 <div class="col-md-6">
     <div class="panel panel-default padding-top padding-bottom">
-      <div class="panel-heading">{{selected_category.name}} ({{selected_category.items|length}} items)</div>
+      <div class="panel-heading">Latest Items</div>
       <div class="panel-body">
-        {% for item in selected_category.items %}
-            <p><a href = "{{url_for('showItem', item_id = item.id)}}">{{item.title}}</a></p>
+        {% for item in items %}
+            <p><a href = "{{url_for('showItem', item_id = item.id)}}">{{item.title}} ({{item.category.name}})</a></p>
         {% endfor %}
       </div>
     </div>

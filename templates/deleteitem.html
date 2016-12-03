@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="col-md-12">
+    <div class="panel panel-default padding-top padding-bottom">
+        <div class="panel-heading"><h2> Are you sure you want to delete &quot{{item.title}}&quot?</h2></div>
+        <div class="panel-body">
+            <form action="#" method='post'>
+                <button type="submit" class="btn btn-primary btn-sm" name="submit" type="submit">Delete</button>
+                <a href="{{url_for('showCategories')}}" class="btn btn-default btn-sm">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

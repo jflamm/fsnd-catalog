@@ -6,20 +6,6 @@
     <div class="col-md-2 text-right"></div>
 </div>
 
-<div class = 'flash'>
-		      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-          
-        <ul>
-        {% for message in messages %}
-            <li> <strong> {{ message }} </strong> </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-
-</div>
-
 <div class="col-md-6">
     <div class="panel panel-default padding-top padding-bottom">
       <div class="panel-heading">Categories</div>
@@ -37,10 +23,9 @@
       <div class="panel-heading">Latest Items</div>
       <div class="panel-body">
         {% for item in items %}
-        <p><a href = "">{{item.title}}
-        </a></p>
+            <p><a href = "{{url_for('showItem', item_id = item.id)}}">{{item.title}} ({{item.category.name}})</a></p>
         {% endfor %}
-        <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus text-right" aria-hidden="true"></span></button>
+        <a href="{{url_for('newItem')}}" class="btn btn-default btn-sm" role="button" aria-pressed="true" ><span class="glyphicon glyphicon-plus text-right" aria-hidden="true"></span></a>
       </div>
     </div>
 </div>
