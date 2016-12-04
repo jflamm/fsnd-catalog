@@ -16,9 +16,9 @@ class Category(Base):
     def serialize(self):
        """Return object data in easily serializeable format"""
        return {
+           'id': self.id,
            'name' : self.name,
-           'id' : self.id,
-           'items': [i.serialize() for i in self.items]
+           'items': [i.serialize for i in self.items]
        }
 
 class User(Base):
@@ -33,9 +33,9 @@ class User(Base):
     def serialize(self):
        """Return object data in easily serializeable format"""
        return {
+           'id': self.id,
            'name' : self.name,
-           'email': self.email,
-           'id' : self.id,
+           'email': self.email
        }
 
 class CategoryItem(Base):
@@ -54,9 +54,10 @@ class CategoryItem(Base):
     def serialize(self):
        """Return object data in easily serializeable format"""
        return {
+           'id': self.id,
+           'user': self.user.name,
            'title' : self.title,
            'description' : self.description,
-           'id' : self.id,
        }
 
 engine = create_engine('postgresql:///catalog')

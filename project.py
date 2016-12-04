@@ -192,10 +192,10 @@ def gdisconnect():
 
 
 # JSON APIs to view Category Information
-@app.route('/catalog.json')
+@app.route('/json')
 def categoriesJSON():
     categories = session.query(Category).all()
-    return jsonify(categories=[r.serialize() for r in categories])
+    return jsonify(categories=[r.serialize for r in categories])
 
 
 # Show all categories
