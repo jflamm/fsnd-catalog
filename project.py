@@ -212,7 +212,6 @@ def showCategories():
 
 # Show all categories and items for chosen category
 @app.route('/category/<int:category_id>/')
-@app.route('/category/<int:category_id>/list/')
 def showCategory(category_id):
     categories = session.query(Category).order_by(asc(Category.name))
     category = session.query(Category).filter_by(id=category_id).one()
