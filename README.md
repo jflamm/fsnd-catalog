@@ -47,7 +47,11 @@ The main site is available at:
     
     /category/<int:category_id> [GET]: list a category
     
+    /category/json/<int:category_id> [GET]: JSON representation of a category
+    
     /item/<int:item_id> [GET]: list an item
+    
+    /item/json/<int:item_id> [GET]: JSON representation of an item
     
     /item/new/ [POST, GET]: create an item
     
